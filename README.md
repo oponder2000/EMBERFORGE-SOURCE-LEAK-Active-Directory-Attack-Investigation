@@ -2,7 +2,7 @@
 
 **Date:** January 31, 2026  
 **Investigation Period:** January 30, 2026 21:00 UTC - January 31, 2026 00:00 UTC  
-**Status:** ✅ Complete - Full Attack Chain Documented
+**Status:** Complete - Full Attack Chain Documented
 
 ---
 
@@ -17,13 +17,13 @@ On January 31, 2026, unreleased source code from EmberForge Studios' upcoming ti
 - **Log Table:** EmberForgeX_CL (Sysmon + Windows Security Events)
 - **Affected Hosts:** 3 systems on emberforge.local domain
 
-### Key Findings at a Glance
+<!--### Key Findings at a Glance
 - Initial compromise: Workstation (10.1.173.145) via malicious file execution
 - Data stolen: C:\GameDev directory (source code + assets)
 - Cloud exfiltration: MEGA (via rclone tool)
 - Domain compromise: Active Directory database (ntds.dit) stolen
 - Persistence: Scheduled tasks, RMM tool (AnyDesk), backdoor account
-- Event logs: Cleared (Security, System) to cover tracks
+- Event logs: Cleared (Security, System) to cover tracks -->
 
 ---
 
