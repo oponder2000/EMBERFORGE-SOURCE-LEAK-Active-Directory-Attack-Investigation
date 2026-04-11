@@ -308,6 +308,188 @@ EmberForgeX_CL
 
 ---
 
+---
+ 
+### Q14: Archive Extraction Before DLL Load
+ 
+**Question:** Before the malicious DLL was loaded, the user opened a downloaded archive. A compression tool extracted its contents to a folder in the user's profile. This extraction step came before the DLL execution.
+ 
+**Answer:** `7zG.exe > C:\Users\lmartin.EMBERFORGE\Downloads\EmberForge_Review\`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where Process_Command_Line_s contains ("7zG.exe")
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF 7ZG EXTRACTION HERE]
+ 
+---
+ 
+### Q15: Primary Tool Deployment
+ 
+**Question:** Shortly after the initial DLL execution, a new executable appeared in a world-writable directory on the workstation. This became the attacker's primary tool for the rest of the operation.
+ 
+**Answer:** `C:\Users\Public\update.exe`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where CommandLine_s contains (".exe") and CommandLine_s contains ("\\Windows\\Temp\\")
+| where CommandLine_s !has ("SplunkUniversalForwarder")
+| where event_time_t > todatetime('2026-01-30T21:27:03.3006203Z')
+| order by event_time_t desc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF UPDATE.EXE EXECUTION HERE]
+ 
+---
+ 
+### Q16: C2 Domain Identification
+ 
+**Question:** The malware needs to communicate with the attacker. Sysmon EventCode 22 captures every DNS query a process makes. The domain will look designed to blend in with legitimate cloud traffic.
+ 
+**Answer:** `cdn.cloud-endpoint.net`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where EventCode_s == 22
+| order by event_time_t desc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF DNS QUERIES HERE]
+ 
+---
+ 
+### Q17: C2 IP Resolution
+ 
+**Question:** DNS queries resolve domains to IP addresses. The QueryResults field inside the EventCode 22 raw XML contains the resolved IPs.
+ 
+**Answer:** `104.21.30.237`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where EventCode_s == 8
+| order by event_time_t desc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF DNS RESOLUTION HERE]
+ 
+---
+ 
+### Q18: Initial Process Injection
+ 
+**Question:** The attacker injected code from one process into another to hide. Sysmon EventCode 8 (CreateRemoteThread) captures this. Trace the injection chain.
+ 
+**Answer:** `rundll32.exe > notepad.exe`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where EventCode_s == 8
+| order by event_time_t desc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF PROCESS INJECTION HERE]
+ 
+---
+ 
+### Q19: UAC Bypass Binary
+ 
+**Question:** Certain Windows executables are trusted to auto-elevate without a UAC prompt. Attackers hijack what these binaries execute via registry modifications. Look for registry changes (EventCode 13) followed immediately by a trusted binary execution.
+ 
+**Answer:** `fodhelper.exe`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where todatetime(UtcTime_s) between (todatetime('2026-01-30 21:22:15.938') .. todatetime('2026-01-30 22:19:55.972'))
+| where user_s == "lmartin"
+| sort by todatetime(UtcTime_s) asc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF FODHELPER EXECUTION HERE]
+ 
+---
+ 
+### Q20: UAC Bypass Registry Value
+ 
+**Question:** The UAC bypass works by creating a specific registry value that redirects execution. Two modifications were made in quick succession. One set the payload path. The other enables the hijack. What is that value name?
+ 
+**Answer:** `DelegateExecute`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where CommandLine_s contains ("HKCU\\Software\\Classes\\ms-settings\\Shell\\Open\\command")
+| sort by todatetime(UtcTime_s) asc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF DELEGATEEXECUTE REGISTRY VALUE HERE]
+ 
+---
+ 
+### Q21: Second Process Injection - SYSTEM Context
+ 
+**Question:** After the UAC bypass, the elevated beacon performed a second injection for long-term stability. The source process was different from the first injection, and the target was running in a completely different security context.
+ 
+**Answer:** `update.exe > spoolsv.exe (NT AUTHORITY\SYSTEM)`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where EventCode_s == 8
+| sort by todatetime(UtcTime_s) asc
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF SPOOLSV INJECTION HERE]
+ 
+---
+ 
+### Q22: LSASS Memory Dump Process
+ 
+**Question:** LSASS holds credentials for every logged-in user. The attacker dumped its memory to disk. The dumping tool used direct syscalls to bypass API monitoring. You will NOT find ProcessAccess events (EventCode 10) for LSASS. What process created the dump file?
+ 
+**Answer:** `update.exe`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where file_name_s has_any (".dmp",".dump","lsass","memory")
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF LSASS DUMP CREATION HERE]
+ 
+---
+ 
+### Q23: LSASS Dump File Location
+ 
+**Question:** You identified the process. Now find where it wrote the output. File creation events (EventCode 11) track every file written to disk. Where was the credential dump written?
+ 
+**Answer:** `C:\Windows\System32\lsass.dmp`
+ 
+**Query Used:**
+```kusto
+EmberForgeX_CL
+| where file_name_s has_any (".dmp",".dump","lsass","memory")
+```
+ 
+**Query Output:**
+[INSERT SCREENSHOT OF LSASS.DMP LOCATION HERE]
+ 
+---
+
 ## Domain Reconnaissance Phase
 
 ---
