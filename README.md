@@ -367,8 +367,6 @@ EmberForgeX_CL
  
 I analyzed registry modification activity followed by process execution and identified that the attacker leveraged a trusted auto-elevating binary for UAC bypass. The binary used was fodhelper.exe.
  
-**Answer:** `fodhelper.exe`
- 
 **Query Used:**
 ```kusto
 EmberForgeX_CL
