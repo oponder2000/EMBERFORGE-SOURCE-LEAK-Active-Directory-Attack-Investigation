@@ -55,9 +55,6 @@ EmberForgeX_CL
 | getschema
 ```
 
-**Query Output:**
-[INSERT SCREENSHOT OF SCHEMA HERE]
-
 ---
 
 ### Q1: Data Targeting - Compression Activity
@@ -71,7 +68,7 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF COMPRESSION COMMANDS HERE]
+<img width="1387" height="58" alt="1" src="https://github.com/user-attachments/assets/a20b9c5d-7186-4a8d-b31d-d74567605081" />
 
 ---
 
@@ -86,7 +83,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF MEGA REFERENCES HERE]
+<img width="1863" height="315" alt="2,3,5,7" src="https://github.com/user-attachments/assets/c54a9e86-0877-453a-aaae-83893f0e6eff" />
+
 
 ---
 
@@ -101,7 +99,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF EMAIL CREDENTIALS HERE]
+<img width="1863" height="315" alt="2,3,5,7" src="https://github.com/user-attachments/assets/e0c3eaa4-dc1b-4c48-a1cb-77b2f94e2844" />
+
 
 ---
 
@@ -118,7 +117,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF NTDS.DIT EXTRACTION COMMANDS HERE]
+<img width="2163" height="456" alt="4" src="https://github.com/user-attachments/assets/0c901157-c3f9-49cf-8d44-3b6097e5d62d" />
+
 
 ---
 
@@ -133,7 +133,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF RCLONE EXECUTIONS HERE]
+<img width="1863" height="315" alt="2,3,5,7" src="https://github.com/user-attachments/assets/48cff783-5c30-47e0-a461-6c1a3fae836a" />
+
 
 ---
 
@@ -149,7 +150,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF NETWORK CONNECTIONS HERE]
+<img width="787" height="463" alt="6" src="https://github.com/user-attachments/assets/1e87fadf-715e-4262-a5d0-36a189a4769d" />
+
 
 ---
 
@@ -164,7 +166,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF PLAINTEXT PASSWORD HERE]
+<img width="1863" height="315" alt="2,3,5,7" src="https://github.com/user-attachments/assets/eb908e95-656b-4d72-82e9-7898f878a16a" />
+
 
 ---
 
@@ -180,7 +183,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF COMPRESS-ARCHIVE EXECUTION HERE]
+<img width="1353" height="461" alt="8" src="https://github.com/user-attachments/assets/8f5d512e-e2a7-4c43-90ff-b2a56f8d6031" />
+
 
 ---
 
@@ -202,7 +206,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF STAGING SERVER REFERENCES HERE]
+<img width="1460" height="187" alt="9" src="https://github.com/user-attachments/assets/333ff596-da65-4a63-97a8-80bfbbf5d47d" />
+
 
 ---
 
@@ -230,7 +235,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF INITIAL EXECUTION HERE]
+<img width="1872" height="378" alt="10" src="https://github.com/user-attachments/assets/abac15ef-7710-40f8-86e5-0938863589ac" />
+
 
 ---
 
@@ -245,7 +251,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF D: DRIVE REFERENCE HERE]
+<img width="625" height="56" alt="11,12" src="https://github.com/user-attachments/assets/35fe1526-7a6c-46f5-ba89-422529793676" />
+
 
 ---
 
@@ -260,7 +267,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF LMARTIN EXECUTION HERE]
+<img width="625" height="56" alt="11,12" src="https://github.com/user-attachments/assets/f614e181-810e-4cdb-b10b-e9ade61ca4a3" />
+
 
 ---
 
@@ -276,7 +284,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF PROCESS CHAIN HERE]
+<img width="916" height="129" alt="13" src="https://github.com/user-attachments/assets/f38e1440-29e0-4ca2-837b-8b8b8feb0895" />
+
 
 ---
 
@@ -293,7 +302,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF 7ZG EXTRACTION HERE]
+<img width="1874" height="101" alt="14" src="https://github.com/user-attachments/assets/58d6768a-e7ba-4fdb-9a0a-ffd90bdbc692" />
+
  
 ---
  
@@ -311,7 +321,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF UPDATE.EXE EXECUTION HERE]
+<img width="1870" height="435" alt="15" src="https://github.com/user-attachments/assets/4d2fff80-e54a-40c1-972d-90e51af49d0f" />
+
  
 ---
  
@@ -327,7 +338,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF DNS QUERIES HERE]
+<img width="1693" height="460" alt="16" src="https://github.com/user-attachments/assets/f6a2413a-b69e-4e68-bf94-eeb7baa658c4" />
+
  
 ---
  
@@ -343,7 +355,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF DNS RESOLUTION HERE]
+<img width="811" height="407" alt="17" src="https://github.com/user-attachments/assets/5f460645-9284-4cea-be47-fa89bbcf1af7" />
+
  
 ---
  
@@ -359,7 +372,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF PROCESS INJECTION HERE]
+<img width="1510" height="323" alt="18" src="https://github.com/user-attachments/assets/3ec4fb35-9be1-4fdf-ac70-4a3749579200" />
+
  
 ---
  
@@ -376,7 +390,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF FODHELPER EXECUTION HERE]
+<img width="1373" height="361" alt="19" src="https://github.com/user-attachments/assets/e121d816-6b76-4189-af16-d8eecc2912d8" />
+
  
 ---
  
@@ -392,7 +407,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF DELEGATEEXECUTE REGISTRY VALUE HERE]
+<img width="1705" height="183" alt="20" src="https://github.com/user-attachments/assets/b4be5d5f-fdb7-49ba-8f39-beeda26e5d76" />
+
  
 ---
  
@@ -408,7 +424,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF SPOOLSV INJECTION HERE]
+<img width="1404" height="321" alt="21" src="https://github.com/user-attachments/assets/bc28c5af-6509-4a3c-a8b4-28f570854800" />
+
  
 ---
  
@@ -423,7 +440,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF LSASS DUMP CREATION HERE]
+<img width="1362" height="128" alt="22" src="https://github.com/user-attachments/assets/304b98f8-d65b-4c9a-a267-93717ae043cc" />
+
  
 ---
  
@@ -438,7 +456,8 @@ EmberForgeX_CL
 ```
  
 **Query Output:**
-[INSERT SCREENSHOT OF LSASS.DMP LOCATION HERE]
+<img width="1110" height="131" alt="23" src="https://github.com/user-attachments/assets/1de85c92-bb80-44a9-9d6c-1d2daa843b4f" />
+
  
 ---
 
@@ -459,7 +478,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF USER ENUMERATION HERE]
+<img width="977" height="409" alt="24" src="https://github.com/user-attachments/assets/e5963c51-b9ce-4b5b-b269-6a72865696ca" />
+
 
 ---
 
@@ -476,7 +496,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF DOMAIN ADMINS QUERY HERE]
+<img width="970" height="409" alt="25" src="https://github.com/user-attachments/assets/622c604a-07ad-4767-93df-88953848287a" />
+
 
 ---
 
@@ -494,7 +515,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF DC DISCOVERY HERE]
+<img width="934" height="344" alt="26" src="https://github.com/user-attachments/assets/3ec67535-9f88-4afb-a43c-c0de27d3cffe" />
+
 
 ---
 
@@ -514,7 +536,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF SHARE CREATION HERE]
+<img width="1437" height="186" alt="27" src="https://github.com/user-attachments/assets/167d5b16-107a-45a2-a018-bd1b38b256dc" />
+
 
 ---
 
@@ -530,7 +553,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF FIREWALL RULE HERE]
+<img width="1123" height="130" alt="28" src="https://github.com/user-attachments/assets/55b85097-cf59-4e39-9094-c04d97793f43" />
+
 
 ---
 
@@ -546,7 +570,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF SPOOLSV PARENT PROCESS HERE]
+<img width="1209" height="126" alt="29" src="https://github.com/user-attachments/assets/e2568e69-587a-4430-97cd-99d91e1378d4" />
+
 
 ---
 
@@ -568,7 +593,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF C$ COPY COMMAND HERE]
+<img width="1720" height="313" alt="30" src="https://github.com/user-attachments/assets/2fff7ae5-4fde-46cd-bbec-9f4a5c75238e" />
+
 
 ---
 
@@ -587,7 +613,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF CERTUTIL DOWNLOAD HERE]
+<img width="1786" height="357" alt="31" src="https://github.com/user-attachments/assets/eaf06d1d-c3f9-4c9e-9804-efa848ec047f" />
+
 
 ---
 
@@ -603,7 +630,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF SERVICE CREATION HERE]
+<img width="2139" height="424" alt="32" src="https://github.com/user-attachments/assets/8247460e-f359-4a26-b263-3f5545bbb1b7" />
+
 
 ---
 
@@ -619,7 +647,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF WHOAMI COMMAND HERE]
+<img width="1313" height="210" alt="33" src="https://github.com/user-attachments/assets/ebae52b8-370b-418e-abcd-3ba3a55cd442" />
+
 
 ---
 
@@ -635,7 +664,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF AUTH FAILURES HERE]
+<img width="622" height="319" alt="34" src="https://github.com/user-attachments/assets/4208ad96-82f6-4a74-bb83-c2e66b9d38b5" />
+
 
 ---
 
@@ -657,7 +687,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF WHOAMI AND VSSADMIN COMMANDS HERE]
+<img width="1665" height="217" alt="35" src="https://github.com/user-attachments/assets/f3bcdce3-b6b6-4cd9-9d8e-6cfdff9d58b9" />
+
 
 ---
 
@@ -674,7 +705,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF ACCOUNT CREATION HERE]
+<img width="1008" height="128" alt="36" src="https://github.com/user-attachments/assets/2e6bd990-bc62-4836-8587-1f7996cff708" />
+
 
 ---
 
@@ -689,7 +721,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF PASSWORD HERE]
+<img width="1039" height="235" alt="37" src="https://github.com/user-attachments/assets/662bc06b-669a-478a-a5b3-f5e85e169686" />
+
 
 ---
 
@@ -706,7 +739,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF DOMAIN ADMINS ADDITION HERE]
+<img width="902" height="127" alt="38" src="https://github.com/user-attachments/assets/47047b12-1e06-40f5-aed1-b0cf834e0236" />
+
 
 ---
 
@@ -722,7 +756,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF DRIVE MAPPING CREDENTIALS HERE]
+<img width="1195" height="296" alt="39" src="https://github.com/user-attachments/assets/88b5d044-f5d3-4697-a1f4-23baa016d99c" />
+
 
 ---
 
@@ -738,7 +773,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF SCHEDULED TASK HERE]
+<img width="1166" height="352" alt="40" src="https://github.com/user-attachments/assets/a6e60dee-9189-4f0d-9cbc-43ff56ed6075" />
+
 
 ---
 
@@ -754,7 +790,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF ANYDESK INSTALLATION HERE]
+<img width="1505" height="432" alt="41" src="https://github.com/user-attachments/assets/a0672321-0b1d-4041-bd80-848ba30dd7cd" />
+
 
 ---
 
@@ -770,7 +807,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF CONFIG MODIFICATION HERE]
+<img width="1040" height="356" alt="42" src="https://github.com/user-attachments/assets/cb77b506-1a30-48be-b033-56396dd09ba5" />
+
 
 ---
 
@@ -790,7 +828,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF WEVTUTIL EXECUTION HERE]
+<img width="776" height="405" alt="43" src="https://github.com/user-attachments/assets/c5e7de17-7c42-46cc-8786-e113f1930ef1" />
+
 
 ---
 
@@ -810,7 +849,8 @@ EmberForgeX_CL
 ```
 
 **Query Output:**
-[INSERT SCREENSHOT OF LOG CLEARING COMMANDS HERE]
+<img width="1155" height="407" alt="44" src="https://github.com/user-attachments/assets/3b2ed9dd-c3a6-4119-9014-19667bdf6b4b" />
+
 
 ---
 
