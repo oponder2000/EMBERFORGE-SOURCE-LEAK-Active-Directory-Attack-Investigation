@@ -374,7 +374,7 @@ EmberForgeX_CL
 **Query Used:**
 ```kusto
 EmberForgeX_CL
-| where EventCode_s == 8
+| where EventCode_s == 22
 | order by event_time_t desc
 ```
  
