@@ -47,9 +47,7 @@ On January 31, 2026, unreleased source code from EmberForge Studios' upcoming ti
 
 ### Q0: Confirm Access - Custom Log Table
 
-**Question:** Confirm you have access. What is the name of the custom log table containing the investigation data?
-
-**Answer:** `EmberForgeX_CL`
+I began the investigation by confirming access to the available data sources. I identified that the custom log table containing the investigation data was EmberForgeX_CL.
 
 **Query Used:**
 ```kusto
@@ -64,9 +62,7 @@ EmberForgeX_CL
 
 ### Q1: Data Targeting - Compression Activity
 
-**Question:** The attacker needed to package data before stealing it. The compression commands reveal exactly what they were targeting. What directory was the source of the stolen data?
-
-**Answer:** `C:\GameDev`
+I investigated compression activity to determine what data the attacker targeted. I identified that the source directory of the stolen data was C:\GameDev.
 
 **Query Used:**
 ```kusto
@@ -81,9 +77,7 @@ EmberForgeX_CL
 
 ### Q2: Cloud Provider Identification
 
-**Question:** The stolen data was uploaded to a cloud storage service. The exfiltration tool's command line contains both the service name and authentication details. What cloud provider received the data?
-
-**Answer:** `MEGA`
+I analyzed command-line activity related to data exfiltration and identified that the cloud provider used to receive the stolen data was MEGA.
 
 **Query Used:**
 ```kusto
@@ -98,9 +92,7 @@ EmberForgeX_CL
 
 ### Q3: Cloud Service Credentials
 
-**Question:** Attackers make OPSEC mistakes. The exfiltration tool was configured with credentials visible in the command line. What email account was used to authenticate to the cloud service?
-
-**Answer:** `jwilson.vhr@proton.me`
+While reviewing exfiltration commands, I identified exposed authentication details and determined that the email account used was jwilson.vhr@proton.me.
 
 **Query Used:**
 ```kusto
@@ -115,9 +107,7 @@ EmberForgeX_CL
 
 ### Q4: Locked System File Access
 
-**Question:** This was not just a workstation compromise. Evidence on the Domain Controller shows the attacker used volume snapshot techniques to access a locked system file. This file contains every credential in the domain. What was it?
-
-**Answer:** `ntds.dit`
+I investigated activity on the Domain Controller and identified that the attacker accessed a critical system file using volume shadow copy techniques. The file accessed was ntds.dit.
 
 **Query Used:**
 ```kusto
@@ -134,9 +124,7 @@ EmberForgeX_CL
 
 ### Q5: Exfiltration Tool Detection
 
-**Question:** Data does not always leave from the machine it was found on. Check all hosts. A cloud synchronisation tool was used to upload data externally. This tool is legitimate software commonly abused by threat actors. It was executed multiple times, not all successfully.
-
-**Answer:** `rclone.exe`
+I reviewed activity across all hosts and identified that the attacker used a cloud synchronization tool for exfiltration. The tool executed multiple times was rclone.exe.
 
 **Query Used:**
 ```kusto
@@ -151,9 +139,7 @@ EmberForgeX_CL
 
 ### Q6: Network Exfiltration - IP Address
 
-**Question:** The exfiltration tool made outbound network connections during the upload. Correlate the tool's process with its network activity (EventCode 3). What IP address received the stolen data?
-
-**Answer:** `66.203.125.15`
+I correlated process execution with network activity and identified that the destination IP address receiving the stolen data was 66.203.125.15.
 
 **Query Used:**
 ```kusto
@@ -169,9 +155,7 @@ EmberForgeX_CL
 
 ### Q7: Plaintext Password Discovery
 
-**Question:** The exfiltration tool was executed multiple times as the attacker troubleshot authentication issues. One execution method exposed credentials far more recklessly than the others. Compare all executions and find the plaintext password.
-
-**Answer:** `Summer2024!`
+I compared multiple executions of the exfiltration tool and identified that one instance exposed credentials in plaintext. The password observed was Summer2024!.
 
 **Query Used:**
 ```kusto
@@ -186,9 +170,7 @@ EmberForgeX_CL
 
 ### Q8: Archive Creation Utility
 
-**Question:** Before exfiltration, the stolen data was compressed into an archive. The attacker used a built-in OS capability rather than third-party tools. This is a Living Off The Land technique. What cmdlet created the archive?
-
-**Answer:** `Compress-Archive`
+I analyzed compression activity and confirmed that the attacker used a built-in Windows cmdlet for archiving. The cmdlet used was Compress-Archive.
 
 **Query Used:**
 ```kusto
@@ -204,9 +186,7 @@ EmberForgeX_CL
 
 ### Q9: Staging Server Domain
 
-**Question:** The attacker did not bring tools manually. They downloaded utilities from external infrastructure they controlled. Multiple commands across the environment reference the same staging server.
-
-**Answer:** `sync.cloud-endpoint.net`
+I investigated tool download activity across the environment and identified that the attacker consistently referenced a staging server domain: sync.cloud-endpoint.net.
 
 **Query Used:**
 ```kusto
@@ -228,9 +208,7 @@ EmberForgeX_CL
 
 ### Q10: Initial Malicious Execution
 
-**Question:** Work backwards. Trace the process chain to the very first malicious execution. The incident started with Lisa opening something from her desktop. Find the earliest malicious process creation event on the workstation.
-
-**Answer:** `review.dll`
+I traced process activity on the workstation to identify the initial point of compromise. I determined that the earliest malicious execution involved review.dll.
 
 **Query Used:**
 ```kusto
@@ -258,9 +236,7 @@ EmberForgeX_CL
 
 ### Q11: Virtual Drive Letter
 
-**Question:** Look at the full path of the malicious file. The drive letter is significant. If the file is not on C:, consider how it got there. Mounted disk images (ISO, IMG, VHD) appear as virtual drives and bypass certain Windows security protections.
-
-**Answer:** `D`
+I examined the file path of the malicious payload and identified that it was executed from a virtual drive. The drive letter used was D.
 
 **Query Used:**
 ```kusto
@@ -275,9 +251,7 @@ EmberForgeX_CL
 
 ### Q12: User Context - Patient Zero
 
-**Question:** The User field in process creation events tells you which account executed the payload. This is patient zero.
-
-**Answer:** `lmartin`
+I analyzed process execution context and identified the user responsible for executing the initial payload. The user account was lmartin.
 
 **Query Used:**
 ```kusto
@@ -292,9 +266,7 @@ EmberForgeX_CL
 
 ### Q13: Process Execution Chain
 
-**Question:** Every process has a parent, and that parent has a parent. Trace the full execution chain from the user action through to the malicious file being loaded.
-
-**Answer:** `explorer.exe → rundll32.exe → review.dll`
+I traced the process lineage to understand execution flow and identified the full chain as explorer.exe → rundll32.exe → review.dll.
 
 **Query Used:**
 ```kusto
@@ -312,9 +284,7 @@ EmberForgeX_CL
  
 ### Q14: Archive Extraction Before DLL Load
  
-**Question:** Before the malicious DLL was loaded, the user opened a downloaded archive. A compression tool extracted its contents to a folder in the user's profile. This extraction step came before the DLL execution.
- 
-**Answer:** `7zG.exe > C:\Users\lmartin.EMBERFORGE\Downloads\EmberForge_Review\`
+I investigated activity preceding the DLL execution and identified that an archive was extracted prior to execution. The extraction was performed by 7zG.exe to C:\Users\lmartin.EMBERFORGE\Downloads\EmberForge_Review\.
  
 **Query Used:**
 ```kusto
@@ -329,9 +299,7 @@ EmberForgeX_CL
  
 ### Q15: Primary Tool Deployment
  
-**Question:** Shortly after the initial DLL execution, a new executable appeared in a world-writable directory on the workstation. This became the attacker's primary tool for the rest of the operation.
- 
-**Answer:** `C:\Users\Public\update.exe`
+I reviewed file execution activity following initial compromise and identified the deployment of a primary attacker tool at C:\Users\Public\update.exe.
  
 **Query Used:**
 ```kusto
@@ -349,9 +317,7 @@ EmberForgeX_CL
  
 ### Q16: C2 Domain Identification
  
-**Question:** The malware needs to communicate with the attacker. Sysmon EventCode 22 captures every DNS query a process makes. The domain will look designed to blend in with legitimate cloud traffic.
- 
-**Answer:** `cdn.cloud-endpoint.net`
+I analyzed DNS query activity across the environment and identified a suspicious domain used for command-and-control communications. The domain observed was cdn.cloud-endpoint.net.
  
 **Query Used:**
 ```kusto
@@ -367,9 +333,7 @@ EmberForgeX_CL
  
 ### Q17: C2 IP Resolution
  
-**Question:** DNS queries resolve domains to IP addresses. The QueryResults field inside the EventCode 22 raw XML contains the resolved IPs.
- 
-**Answer:** `104.21.30.237`
+I reviewed DNS resolution results and identified the IP address associated with the command-and-control domain. The resolved IP address was 104.21.30.237.
  
 **Query Used:**
 ```kusto
@@ -385,9 +349,7 @@ EmberForgeX_CL
  
 ### Q18: Initial Process Injection
  
-**Question:** The attacker injected code from one process into another to hide. Sysmon EventCode 8 (CreateRemoteThread) captures this. Trace the injection chain.
- 
-**Answer:** `rundll32.exe > notepad.exe`
+I investigated process injection activity using Sysmon EventCode 8 and identified that the attacker injected code from rundll32.exe into notepad.exe.
  
 **Query Used:**
 ```kusto
@@ -403,7 +365,7 @@ EmberForgeX_CL
  
 ### Q19: UAC Bypass Binary
  
-**Question:** Certain Windows executables are trusted to auto-elevate without a UAC prompt. Attackers hijack what these binaries execute via registry modifications. Look for registry changes (EventCode 13) followed immediately by a trusted binary execution.
+I analyzed registry modification activity followed by process execution and identified that the attacker leveraged a trusted auto-elevating binary for UAC bypass. The binary used was fodhelper.exe.
  
 **Answer:** `fodhelper.exe`
  
@@ -422,9 +384,7 @@ EmberForgeX_CL
  
 ### Q20: UAC Bypass Registry Value
  
-**Question:** The UAC bypass works by creating a specific registry value that redirects execution. Two modifications were made in quick succession. One set the payload path. The other enables the hijack. What is that value name?
- 
-**Answer:** `DelegateExecute`
+I examined registry changes associated with the UAC bypass and identified that the attacker created a value enabling the hijack. The registry value name was DelegateExecute.
  
 **Query Used:**
 ```kusto
@@ -440,9 +400,7 @@ EmberForgeX_CL
  
 ### Q21: Second Process Injection - SYSTEM Context
  
-**Question:** After the UAC bypass, the elevated beacon performed a second injection for long-term stability. The source process was different from the first injection, and the target was running in a completely different security context.
- 
-**Answer:** `update.exe > spoolsv.exe (NT AUTHORITY\SYSTEM)`
+I continued investigating process injection activity after privilege escalation and identified that the attacker injected from update.exe into spoolsv.exe, operating under NT AUTHORITY\SYSTEM.
  
 **Query Used:**
 ```kusto
@@ -458,9 +416,7 @@ EmberForgeX_CL
  
 ### Q22: LSASS Memory Dump Process
  
-**Question:** LSASS holds credentials for every logged-in user. The attacker dumped its memory to disk. The dumping tool used direct syscalls to bypass API monitoring. You will NOT find ProcessAccess events (EventCode 10) for LSASS. What process created the dump file?
- 
-**Answer:** `update.exe`
+I investigated credential access techniques and identified that the attacker dumped LSASS memory using a process that bypassed standard API monitoring. The process responsible was update.exe.
  
 **Query Used:**
 ```kusto
@@ -475,9 +431,7 @@ EmberForgeX_CL
  
 ### Q23: LSASS Dump File Location
  
-**Question:** You identified the process. Now find where it wrote the output. File creation events (EventCode 11) track every file written to disk. Where was the credential dump written?
- 
-**Answer:** `C:\Windows\System32\lsass.dmp`
+I analyzed file creation events and identified the location where the LSASS memory dump was written. The file was located at C:\Windows\System32\lsass.dmp.
  
 **Query Used:**
 ```kusto
@@ -496,9 +450,7 @@ EmberForgeX_CL
 
 ### Q24: Initial User Enumeration
 
-**Question:** The attacker began reconnaissance of the domain by listing all users. What command was used?
-
-**Answer:** `net user /domain`
+I reviewed domain reconnaissance activity and identified that the attacker enumerated domain users using the command net user /domain.
 
 **Query Used:**
 ```kusto
@@ -515,9 +467,7 @@ EmberForgeX_CL
 
 ### Q25: Domain Admins Group Query
 
-**Question:** Immediately after listing users, the attacker queried a specific group to identify who has the highest level of access.
-
-**Answer:** `net group "Domain Admins" /domain`
+I continued analyzing reconnaissance commands and identified that the attacker queried privileged accounts using net group "Domain Admins" /domain.
 
 **Query Used:**
 ```kusto
@@ -534,9 +484,7 @@ EmberForgeX_CL
 
 ### Q26: Domain Controller Discovery
 
-**Question:** The final discovery command locates critical infrastructure. The attacker needs to know where to go next.
-
-**Answer:** `nltest /dclist:emberforge.local`
+I analyzed further discovery activity and identified that the attacker located domain controllers using nltest /dclist:emberforge.local.
 
 **Query Used:**
 ```kusto
@@ -558,9 +506,7 @@ EmberForgeX_CL
 
 ### Q27: Network Share Creation
 
-**Question:** Before moving laterally, the attacker set up the workstation as a distribution point. A network share was created.
-
-**Answer:** `cmd.exe /c "net share tools=C:\Users\Public /grant:everyone,full"`
+I investigated lateral movement preparation and identified that the attacker created a network share using cmd.exe /c "net share tools=C:\Users\Public /grant:everyone,full".
 
 **Query Used:**
 ```kusto
@@ -576,9 +522,7 @@ EmberForgeX_CL
 
 ### Q28: Firewall Rule Addition
 
-**Question:** The workstation's firewall was blocking inbound connections needed for lateral movement. A rule was added. What name was given to the firewall rule?
-
-**Answer:** `SMB`
+I analyzed firewall modification activity and identified that the attacker added a rule named SMB to allow inbound connections.
 
 **Query Used:**
 ```kusto
@@ -594,9 +538,7 @@ EmberForgeX_CL
 
 ### Q29: Elevated Parent Process
 
-**Question:** After the beacon migrated to a SYSTEM process, all subsequent attacker commands on the workstation were executed as children of that process.
-
-**Answer:** `spoolsv.exe`
+I reviewed process hierarchies following privilege escalation and identified that subsequent attacker commands were executed under the parent process spoolsv.exe.
 
 **Query Used:**
 ```kusto
@@ -612,9 +554,7 @@ EmberForgeX_CL
 
 ### Q30: Tool Distribution to Server
 
-**Question:** The attacker pushed their primary tool to the server via Windows admin shares (C$). What was the full command?
-
-**Answer:** `cmd.exe /c copy C:\Users\Public\update.exe \\10.1.57.66\C$\Users\Public\update.exe`
+I analyzed lateral movement activity and identified that the attacker copied their primary tool to the server using the command cmd.exe /c copy C:\Users\Public\update.exe \\10.1.57.66\C$\Users\Public\update.exe.
 
 **Query Used:**
 ```kusto
@@ -640,9 +580,7 @@ EmberForgeX_CL
 
 ### Q31: Tool Download from Staging
 
-**Question:** On the server, a built-in Windows utility was abused to download tools from the attacker's staging infrastructure. What utility was used, and what was the full URL?
-
-**Answer:** `certutil.exe > http://sync.cloud-endpoint.net:8080/AnyDesk.exe`
+I reviewed activity on the compromised server and identified that the attacker used a built-in Windows utility to download tools. The utility and URL observed were certutil.exe > http://sync.cloud-endpoint.net:8080/AnyDesk.exe.
 
 **Query Used:**
 ```kusto
@@ -657,9 +595,7 @@ EmberForgeX_CL
 
 ### Q32: Remote Service Creation
 
-**Question:** The attacker used a remote execution technique that creates temporary Windows services with random names (EventCode 7045).
-
-**Answer:** `MzLblBFm`
+I investigated service creation events and identified that the attacker created a temporary service with the name MzLblBFm.
 
 **Query Used:**
 ```kusto
@@ -675,9 +611,7 @@ EmberForgeX_CL
 
 ### Q33: First Remote Command
 
-**Question:** The remote execution technique redirects command output to temporary files. The very first attacker command on any newly compromised host is almost always the same.
-
-**Answer:** `whoami`
+I analyzed remote command execution patterns and identified that the first command executed on the compromised host was whoami.
 
 **Query Used:**
 ```kusto
@@ -693,9 +627,7 @@ EmberForgeX_CL
 
 ### Q34: Authentication Failure Analysis
 
-**Question:** The attacker's first lateral movement method was unreliable. Authentication logs on the server show repeated failures from an internal host (EventCode 4625).
-
-**Answer:** `NTLM`
+I reviewed authentication logs and identified repeated failures associated with the attacker’s lateral movement attempts. The authentication method observed was NTLM.
 
 **Query Used:**
 ```kusto
@@ -715,9 +647,7 @@ EmberForgeX_CL
 
 ### Q35: First Command and Extraction Tool
 
-**Question:** The same remote execution pattern from the server was used against the DC. Trace the first command and the extraction tool to access the locked AD database.
-
-**Answer:** `whoami > vssadmin.exe`
+I analyzed activity on the domain controller and identified that the attacker executed whoami followed by use of vssadmin.exe to access protected files.
 
 **Query Used:**
 ```kusto
@@ -735,9 +665,7 @@ EmberForgeX_CL
 
 ### Q36: Backdoor Account Creation
 
-**Question:** After extracting the database, the attacker created a new account designed to blend in with legitimate service accounts.
-
-**Answer:** `svc_backup`
+I reviewed account management activity and identified that the attacker created a new account named svc_backup.
 
 **Query Used:**
 ```kusto
@@ -754,9 +682,7 @@ EmberForgeX_CL
 
 ### Q37: Backdoor Account Password
 
-**Question:** The account creation command included the password as a command line argument.
-
-**Answer:** `P@ssw0rd123!`
+I examined the account creation command and identified that the password used for the backdoor account was P@ssw0rd123!.
 
 **Query Used:**
 ```kusto
@@ -771,9 +697,7 @@ EmberForgeX_CL
 
 ### Q38: Account Privilege Elevation
 
-**Question:** Creating an account is not enough. The attacker ran a second command to give it elevated privileges.
-
-**Answer:** `Domain Admins`
+I analyzed privilege escalation activity and identified that the attacker added the backdoor account to the Domain Admins group.
 
 **Query Used:**
 ```kusto
@@ -790,9 +714,7 @@ EmberForgeX_CL
 
 ### Q39: Drive Mapping Credentials
 
-**Question:** The attacker needed to map a network drive on the DC to access tools. The drive mapping command included authentication credentials in plain text.
-
-**Answer:** `EmberForge2024!`
+I reviewed drive mapping activity and identified that plaintext credentials were used. The password observed was EmberForge2024!.
 
 **Query Used:**
 ```kusto
@@ -808,9 +730,7 @@ EmberForgeX_CL
 
 ### Q40: Scheduled Task for Persistence
 
-**Question:** The attacker created a scheduled task to ensure their payload survives reboots. The name was chosen to look legitimate.
-
-**Answer:** `WindowsUpdate`
+I investigated persistence mechanisms and identified that the attacker created a scheduled task named WindowsUpdate.
 
 **Query Used:**
 ```kusto
@@ -826,9 +746,7 @@ EmberForgeX_CL
 
 ### Q41: Remote Management Tool Installation
 
-**Question:** A legitimate remote management application was silently installed for unattended access.
-
-**Answer:** `AnyDesk`
+I analyzed software installation activity and identified that the attacker installed a remote management tool, AnyDesk, for persistent access.
 
 **Query Used:**
 ```kusto
@@ -844,9 +762,7 @@ EmberForgeX_CL
 
 ### Q42: RMM Configuration Modification
 
-**Question:** The attacker read and modified the remote access tool's configuration file. The commands reveal its full path.
-
-**Answer:** `C:\ProgramData\AnyDesk\system.conf`
+I reviewed configuration changes to the remote management tool and identified that the configuration file modified was C:\ProgramData\AnyDesk\system.conf.
 
 **Query Used:**
 ```kusto
@@ -862,9 +778,7 @@ EmberForgeX_CL
 
 ### Q43: Event Log Clearing Tool
 
-**Question:** The attacker used a built-in Windows utility to clear event logs on the DC. What tool was used?
-
-**Answer:** `wevtutil`
+I investigated log tampering activity and identified that the attacker used the tool wevtutil to clear event logs.
 
 **Query Used:**
 ```kusto
@@ -884,9 +798,7 @@ EmberForgeX_CL
 
 ### Q44: Cleared Event Logs
 
-**Question:** The attacker cleared more than one event log. Each clearing command targets a specific log by name. What two logs were cleared?
-
-**Answer:** `System`, `Security`
+I analyzed log clearing commands and identified that the attacker cleared the System and Security event logs.
 
 **Query Used:**
 ```kusto
