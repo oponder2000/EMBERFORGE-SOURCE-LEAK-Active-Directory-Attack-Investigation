@@ -1,6 +1,8 @@
 # Threat Hunt Report: EmberForge Studios Breach Investigation
 
-<img width="1706" height="1182" alt="image" src="https://github.com/user-attachments/assets/146c43fe-a77b-40fc-a34d-3f70467db482" />
+<img width="1200" height="630" alt="image" src="https://github.com/user-attachments/assets/4623a0aa-6d24-40e4-9d1d-3560aead59f3" />
+
+
 
 **Date:** January 31, 2026  
 **Investigation Period:** January 30, 2026 21:00 UTC - January 31, 2026 00:00 UTC  
@@ -9,6 +11,8 @@
 ---
 
 ## Executive Summary
+
+<img width="1706" height="1182" alt="image" src="https://github.com/user-attachments/assets/146c43fe-a77b-40fc-a34d-3f70467db482" />
 
 On January 31, 2026, unreleased source code from EmberForge Studios' upcoming title **"Neon Shadows"** appeared on underground forums. The leaked material includes proprietary game engine components and unreleased assets. External monitoring flagged the breach within 48 hours.
 
