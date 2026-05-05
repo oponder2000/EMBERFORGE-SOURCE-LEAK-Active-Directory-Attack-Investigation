@@ -1,5 +1,7 @@
 # Threat Hunt Report: EmberForge Studios Breach Investigation
 
+<img width="1706" height="1182" alt="image" src="https://github.com/user-attachments/assets/146c43fe-a77b-40fc-a34d-3f70467db482" />
+
 **Date:** January 31, 2026  
 **Investigation Period:** January 30, 2026 21:00 UTC - January 31, 2026 00:00 UTC  
 **Status:** Complete - Full Attack Chain Documented
